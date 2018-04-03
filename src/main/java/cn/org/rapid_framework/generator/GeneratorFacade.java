@@ -6,6 +6,7 @@ import java.io.FileNotFoundException;
 import java.io.FileOutputStream;
 import java.io.IOException;
 import java.io.PrintStream;
+import java.net.URL;
 import java.util.ArrayList;
 import java.util.Date;
 import java.util.HashMap;
@@ -81,7 +82,10 @@ public class GeneratorFacade {
 	}
 	
     private Generator getGenerator(String templateRootDir) {
-        g.setTemplateRootDir(new File(templateRootDir).getAbsoluteFile());
+
+		URL url = this.getClass().getClassLoader().getResource(templateRootDir);
+
+        g.setTemplateRootDir(new File(url.getFile()));
         return g;
     }
     
