@@ -172,7 +172,7 @@ public class TableFactory {
 	
 	private List getAllTables(Connection conn) throws SQLException {
 		DatabaseMetaData dbMetaData = conn.getMetaData();
-		ResultSet rs = dbMetaData.getTables(getCatalog(), getSchema(), null, null);
+		ResultSet rs = dbMetaData.getTables(conn.getCatalog(), getSchema(), null, null);
 		List tables = new ArrayList();
 		while(rs.next()) {
 			tables.add(createTable(conn, rs));
